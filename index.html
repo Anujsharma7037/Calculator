@@ -5,6 +5,34 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Calculator</title>
     <link rel="stylesheet" href="style.css">
+
+    <script>
+    // script.js
+    function appendToDisplay(value) {
+        const display = document.getElementById('display');
+
+        // If the user clicked the % button, handle it
+        if (value === '%') {
+            value = '/100'; // Convert % to division by 100
+        }
+
+        display.value += value;
+    }
+
+    function clearDisplay() {
+        const display = document.getElementById('display');
+        display.value = ''; // Clear the display
+    }
+
+    function calculateResult() {
+        const display = document.getElementById('display');
+        try {
+            display.value = eval(display.value); // Evaluate the expression
+        } catch (error) {
+            display.value = 'Error'; // Handle invalid expressions
+        }
+    }
+    </script>
 </head>
 <body>
     <div class="container">
@@ -39,7 +67,7 @@
             <button onclick="appendToDisplay('00')">00</button>
             <button onclick="appendToDisplay('.')">.</button>
 
-            <button class="a" onclick="calculaterResult()">=</button>
+            <button class="a" onclick="calculateResult()">=</button>
            </div>
     </div>
     
